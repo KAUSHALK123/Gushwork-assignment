@@ -1,0 +1,830 @@
+/* ============================================================
+   STYLES.CSS — Mangalam HDPE Pipes
+   Structure:
+   1. CSS Variables / Design Tokens
+   2. Reset & Base
+   3. Typography
+   4. Utility Classes (buttons)
+   5. Sticky Header
+   6. Navbar
+   7. Hero / Product Section
+   8. Carousel
+   9. Zoom Preview
+   10. Product Details
+   11. Trust Bar
+   12. Responsive Breakpoints
+============================================================ */
+
+/* ── 1. CSS Variables ── */
+:root {
+  /* Colors */
+  --color-bg:          #f8f9fb;
+  --color-white:       #ffffff;
+  --color-black:       #111827;
+  --color-heading:     #0f172a;
+  --color-text:        #374151;
+  --color-text-muted:  #6B7280;
+  --color-border:      #E5E7EB;
+  --color-blue:        #1D4ED8;
+  --color-blue-light:  #EFF6FF;
+  --color-yellow-bg:   #FEF9C3;
+  --color-yellow-text: #854D0E;
+  --color-tag-blue-bg: #DBEAFE;
+  --color-tag-blue-text: #1E40AF;
+
+  /* Spacing */
+  --space-80: 80px;
+  --space-100: 100px;
+  --max-width: 1240px;
+  --navbar-h: 77px;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+  --shadow-btn:  0 1px 2px rgba(0,0,0,0.12);
+
+  /* Transitions */
+  --transition: 0.2s ease;
+}
+
+/* ── 2. Reset & Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* ── 3. Typography ── */
+h1, h2, h3 {
+  color: var(--color-heading);
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+/* ── 4. Utility: Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  transition: background var(--transition), color var(--transition),
+              border-color var(--transition), box-shadow var(--transition);
+  white-space: nowrap;
+}
+
+.btn--primary {
+  background: #1944a0;
+  color: var(--color-white);
+  border: 1.5px solid #1944a0;
+  box-shadow: var(--shadow-btn);
+}
+
+.btn--primary:hover {
+  background: #1D4ED8;
+  border-color: #1D4ED8;
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-heading);
+  border: 1.5px solid var(--color-border);
+}
+
+.btn--outline:hover {
+  border-color: #9CA3AF;
+  background: #f9fafb;
+}
+
+.btn--lg {
+  padding: 12px 24px;
+  font-size: 15px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── 5. Sticky Header ── */
+.sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  transform: translateY(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* JS adds this class when scrolled past hero */
+.sticky-header.is-visible {
+  transform: translateY(0);
+}
+
+.sticky-header__inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 12px 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.sticky-header__title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-heading);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sticky-header__actions {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* ── 6. Navbar ── */
+.navbar {
+  position: relative;
+  top: 0;
+  z-index: 100;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  width: 100%;
+  transition: top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.navbar.sticky-pushed {
+  top: 53px; /* sticky header height */
+}
+
+.navbar__inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 16px 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--navbar-h);
+}
+
+/* Logo */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logo-text__main {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--color-heading);
+  letter-spacing: -0.3px;
+}
+
+.logo-text__sub {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Nav links */
+.navbar__nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.navbar__link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color var(--transition);
+}
+
+.navbar__link:hover {
+  color: var(--color-heading);
+}
+
+.navbar__cta {
+  margin-left: 8px;
+}
+
+/* Mobile hamburger */
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+}
+
+.navbar__hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-heading);
+  border-radius: 2px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+/* ── 7. Hero / Product Section ── */
+.hero-section {
+  position: relative;
+  background-color: #f1f3f6;
+  border-top: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+/* Noise texture overlay using CSS pseudo-element */
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url('assets/images/noise-texture.png');
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  mix-blend-mode: overlay;
+}
+
+.hero-section__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-80);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.breadcrumb__link {
+  color: var(--color-text-muted);
+  transition: color var(--transition);
+}
+
+.breadcrumb__link:hover {
+  color: var(--color-heading);
+}
+
+.breadcrumb__sep {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb__current {
+  color: var(--color-heading);
+  font-weight: 500;
+}
+
+/* Product layout: 2 columns */
+.product-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-80);
+  align-items: start;
+}
+
+/* ── 8. Carousel ── */
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: visible;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+/* Main image area */
+.carousel__main {
+  position: relative;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel__image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+.carousel__main-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+  user-select: none;
+}
+
+/* Zoom lens (highlight box on main image) */
+.zoom-lens {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border: 2px solid var(--color-blue);
+  border-radius: 4px;
+  background: rgba(29, 78, 216, 0.08);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.carousel__image-container:hover .zoom-lens {
+  opacity: 1;
+}
+
+/* Arrow buttons */
+.carousel__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: box-shadow var(--transition), background var(--transition);
+}
+
+.carousel__arrow:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.14);
+  background: #f9fafb;
+}
+
+.carousel__arrow--prev { left: 12px; }
+.carousel__arrow--next { right: 12px; }
+
+/* Thumbnails */
+.carousel__thumbs {
+  display: flex;
+  gap: 10px;
+  padding: 0 2px;
+}
+
+.carousel__thumb {
+  flex: 1;
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  overflow: hidden;
+  background: var(--color-white);
+  transition: border-color var(--transition), transform var(--transition);
+  cursor: pointer;
+}
+
+.carousel__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel__thumb:hover {
+  border-color: #9CA3AF;
+  transform: translateY(-1px);
+}
+
+.carousel__thumb--active {
+  border-color: var(--color-blue) !important;
+}
+
+/* ── 9. Zoom Preview Window ── */
+.zoom-preview {
+  position: absolute;
+  left: calc(100% + 16px);
+  top: 0;
+  width: 320px;
+  height: 320px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 50;
+}
+
+.zoom-preview.is-visible {
+  opacity: 1;
+}
+
+.zoom-preview__img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  max-width: none;
+  /* Position controlled by JS */
+}
+
+/* ── 10. Product Details ── */
+.product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Certification badges */
+.cert-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cert-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-white);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-heading);
+}
+
+/* Product title */
+.product-title {
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 800;
+  color: var(--color-heading);
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+
+/* Feature list */
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feature-list__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-heading);
+}
+
+.feature-list__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Price box */
+.price-box {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.price-box__label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.price-box__value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-heading);
+  letter-spacing: -0.3px;
+}
+
+.price-box__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.price-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.price-tag--yellow {
+  background: var(--color-yellow-bg);
+  color: var(--color-yellow-text);
+}
+
+.price-tag--blue {
+  background: var(--color-tag-blue-bg);
+  color: var(--color-tag-blue-text);
+}
+
+.price-box__cert {
+  font-size: 13px;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+/* CTA buttons */
+.cta-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ── 11. Trust Bar ── */
+.trust-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding-top: 40px;
+  border-top: 1px solid var(--color-border);
+}
+
+.trust-bar__label {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  text-align: center;
+}
+
+.trust-bar__logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.trust-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  opacity: 0.7;
+  transition: opacity var(--transition);
+}
+
+.trust-logo:hover {
+  opacity: 1;
+}
+
+.trust-logo strong {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  color: var(--color-heading);
+}
+
+.trust-logo strong span {
+  color: var(--color-blue);
+}
+
+.trust-logo small {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* ── 12. Responsive Breakpoints ── */
+
+@media (max-width: 1200px) {
+  .navbar__inner {
+    padding: 16px 80px;
+  }
+
+  .sticky-header__inner {
+    padding: 12px 80px;
+  }
+
+  .hero-section__inner {
+    padding: 80px;
+  }
+
+  .zoom-preview {
+    width: 260px;
+    height: 260px;
+    left: calc(100% + 12px);
+  }
+}
+
+@media (max-width: 1080px) {
+  .navbar__inner {
+    padding: 16px 60px;
+  }
+
+  .sticky-header__inner {
+    padding: 12px 60px;
+  }
+
+  .hero-section__inner {
+    padding: 80px 60px;
+  }
+
+  .product-layout {
+    gap: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar__inner {
+    padding: 16px 32px;
+  }
+
+  .sticky-header__inner {
+    padding: 12px 32px;
+    justify-content: flex-end;
+  }
+
+  .sticky-header__title {
+    display: none;
+  }
+
+  .hero-section__inner {
+    padding: 60px 32px;
+  }
+
+  .product-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .product-title {
+    font-size: 28px;
+  }
+
+  .navbar__nav {
+    display: none;
+    position: absolute;
+    top: var(--navbar-h);
+    left: 0;
+    right: 0;
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 32px;
+    gap: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+
+  .navbar__nav.is-open {
+    display: flex;
+  }
+
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  .trust-bar__logos {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar__inner {
+    padding: 16px 20px;
+  }
+
+  .sticky-header__inner {
+    padding: 12px 20px;
+  }
+
+  .hero-section__inner {
+    padding: 40px 20px;
+  }
+
+  .zoom-preview {
+    display: none;
+  }
+
+  .cert-badges {
+    gap: 6px;
+  }
+
+  .cert-badge {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .cta-buttons .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .trust-bar__logos {
+    gap: 16px;
+  }
+
+  .trust-logo strong {
+    font-size: 14px;
+  }
+
+  .carousel__thumbs {
+    gap: 6px;
+  }
+}

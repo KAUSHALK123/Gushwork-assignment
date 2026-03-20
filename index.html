@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mangalam HDPE Pipes</title>
+  <!-- Google Fonts: Inter for body, used throughout -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       STICKY HEADER (appears on scroll past first fold)
+  ============================================================ -->
+  <div class="sticky-header" id="stickyHeader">
+    <div class="sticky-header__inner">
+      <span class="sticky-header__title">Premium HDPE Pipes &amp; Coils for Modern Infrastructure</span>
+      <div class="sticky-header__actions">
+        <a href="#" class="btn btn--outline">View Technical Specs</a>
+        <a href="#" class="btn btn--primary">Get Custom Quote</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <!-- Logo -->
+      <a href="#" class="navbar__logo">
+        <div class="logo-mark">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="36" height="36" rx="4" fill="#111827"/>
+            <text x="18" y="24" text-anchor="middle" fill="white" font-size="13" font-weight="700" font-family="Inter">M</text>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-text__main">MangaLam</span>
+          <span class="logo-text__sub">HDPE | PIPES</span>
+        </div>
+      </a>
+
+      <!-- Nav Links -->
+      <nav class="navbar__nav" id="navMenu">
+        <a href="#" class="navbar__link">About Us</a>
+        <a href="#" class="navbar__link navbar__link--dropdown">
+          Products
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#" class="btn btn--primary navbar__cta">Contact Us</a>
+      </nav>
+
+      <!-- Mobile Hamburger -->
+      <button class="navbar__hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       SECTION 1: HERO / PRODUCT DETAIL
+  ============================================================ -->
+  <main>
+    <section class="hero-section" id="heroSection">
+      <!-- Noise texture overlay -->
+      <div class="noise-overlay"></div>
+
+      <div class="hero-section__inner">
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="#" class="breadcrumb__link">Products</a>
+          <span class="breadcrumb__sep">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="breadcrumb__current">Two For One Twister</span>
+        </nav>
+
+        <!-- Product Layout: Left (carousel) + Right (details) -->
+        <div class="product-layout">
+
+          <!-- ── LEFT: Image Carousel ── -->
+          <div class="carousel-wrapper">
+            <div class="carousel" id="carousel">
+
+              <!-- Main image display -->
+              <div class="carousel__main" id="carouselMain">
+                <button class="carousel__arrow carousel__arrow--prev" id="prevBtn" aria-label="Previous image">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 4l-6 6 6 6" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+
+                <!-- Main image with zoom preview -->
+                <div class="carousel__image-container" id="imageContainer">
+                  <img
+                    src="assets/images/noise-texture.png.png"
+                    alt="Premium HDPE Pipes - Main View"
+                    class="carousel__main-img"
+                    id="mainImage"
+                    draggable="false"
+                  />
+                  <!-- Zoom lens indicator -->
+                  <div class="zoom-lens" id="zoomLens"></div>
+                </div>
+
+                <button class="carousel__arrow carousel__arrow--next" id="nextBtn" aria-label="Next image">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 4l6 6-6 6" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
+
+              <!-- Zoom preview window -->
+              <div class="zoom-preview" id="zoomPreview">
+                <img src="assets/images/product-main.jpg" alt="Zoom preview" class="zoom-preview__img" id="zoomPreviewImg" />
+              </div>
+
+              <!-- Thumbnails -->
+              <div class="carousel__thumbs" id="carouselThumbs">
+                <button class="carousel__thumb carousel__thumb--active" data-index="0" aria-label="Image 1">
+                  <img src="assets/images/product-main.jpg" alt="Thumbnail 1" />
+                </button>
+                <button class="carousel__thumb" data-index="1" aria-label="Image 2">
+                  <img src="assets/images/product-main.jpg" alt="Thumbnail 2" />
+                </button>
+                <button class="carousel__thumb" data-index="2" aria-label="Image 3">
+                  <img src="assets/images/product-main.jpg" alt="Thumbnail 3" />
+                </button>
+                <button class="carousel__thumb" data-index="3" aria-label="Image 4">
+                  <img src="assets/images/product-main.jpg" alt="Thumbnail 4" />
+                </button>
+                <button class="carousel__thumb" data-index="4" aria-label="Image 5">
+                  <img src="assets/images/product-main.jpg" alt="Thumbnail 5" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── RIGHT: Product Details ── -->
+          <div class="product-details">
+
+            <!-- Certification badges -->
+            <div class="cert-badges">
+              <span class="cert-badge">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l1.5 3 3.5.5-2.5 2.5.5 3.5L8 9l-3 1.5.5-3.5L3 4.5l3.5-.5L8 1z" stroke="#1D4ED8" stroke-width="1.2" fill="none"/></svg>
+                BIS Certified
+              </span>
+              <span class="cert-badge">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="8" rx="1" stroke="#1D4ED8" stroke-width="1.2"/><path d="M5 8h6M8 6v4" stroke="#1D4ED8" stroke-width="1"/></svg>
+                ISO Certified
+              </span>
+              <span class="cert-badge">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#1D4ED8" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="#1D4ED8" stroke-width="1.2" stroke-linecap="round"/></svg>
+                CE Certified
+              </span>
+            </div>
+
+            <!-- Heading -->
+            <h1 class="product-title">
+              Premium HDPE Pipes &amp; Coils for Modern Infrastructure
+            </h1>
+
+            <!-- Feature list -->
+            <ul class="feature-list">
+              <li class="feature-list__item">
+                <span class="feature-list__icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" fill="#1D4ED8"/><path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Leak-Proof Fusion Joints
+              </li>
+              <li class="feature-list__item">
+                <span class="feature-list__icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" fill="#1D4ED8"/><path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Chemical Resistance
+              </li>
+              <li class="feature-list__item">
+                <span class="feature-list__icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" fill="#1D4ED8"/><path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                50+ Year Service Life
+              </li>
+              <li class="feature-list__item">
+                <span class="feature-list__icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" fill="#1D4ED8"/><path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Flexible Installation
+              </li>
+              <li class="feature-list__item">
+                <span class="feature-list__icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" fill="#1D4ED8"/><path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Flexible Installation
+              </li>
+            </ul>
+
+            <!-- Price box -->
+            <div class="price-box">
+              <span class="price-box__label">Price Range</span>
+              <div class="price-box__value">₹4,80,000 - 7,90,000</div>
+              <div class="price-box__tags">
+                <span class="price-tag price-tag--yellow">Shipping: 6-12 days</span>
+                <span class="price-tag price-tag--blue">Returns: If returned within 7 days</span>
+              </div>
+              <div class="price-box__cert">
+                Certifications: ISO Certified, BIS Certified
+              </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="cta-buttons">
+              <a href="#" class="btn btn--primary btn--lg">Get Custom Quote</a>
+              <a href="#" class="btn btn--outline btn--lg">
+                View Technical Specs
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+
+          </div><!-- /product-details -->
+        </div><!-- /product-layout -->
+
+        <!-- Trust bar -->
+        <div class="trust-bar">
+          <p class="trust-bar__label">Trusted by Hundreds of Companies Globally</p>
+          <div class="trust-bar__logos">
+            <!-- Euroflex logo repeated 5 times -->
+            <div class="trust-logo">
+              <strong>EUR<span>O</span>FLEX</strong>
+              <small>WE CREATE SOLUTIONS</small>
+            </div>
+            <div class="trust-logo">
+              <strong>EUR<span>O</span>FLEX</strong>
+              <small>WE CREATE SOLUTIONS</small>
+            </div>
+            <div class="trust-logo">
+              <strong>EUR<span>O</span>FLEX</strong>
+              <small>WE CREATE SOLUTIONS</small>
+            </div>
+            <div class="trust-logo">
+              <strong>EUR<span>O</span>FLEX</strong>
+              <small>WE CREATE SOLUTIONS</small>
+            </div>
+            <div class="trust-logo">
+              <strong>EUR<span>O</span>FLEX</strong>
+              <small>WE CREATE SOLUTIONS</small>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /hero-section__inner -->
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
