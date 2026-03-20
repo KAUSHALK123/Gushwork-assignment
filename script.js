@@ -434,3 +434,10 @@ if (processTabs && processTitle) {
     });
   });
 }
+
+/* SECTION 7: TESTIMONIALS INFINITE LOOP */
+const testimonialsTrack = document.getElementById('testimonialsTrack');
+if (testimonialsTrack) {
+  const cards = testimonialsTrack.innerHTML;
+  testimonialsTrack.innerHTML = cards + cards;
+}
