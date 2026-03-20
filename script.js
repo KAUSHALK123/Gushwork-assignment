@@ -24,10 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleScroll = () => {
       if (window.scrollY > STICKY_OFFSET) {
         stickyHeader.classList.add('is-visible');
-        
+        navbar.classList.add('sticky-pushed');
       } else {
         stickyHeader.classList.remove('is-visible');
-       
+        navbar.classList.remove('sticky-pushed');
       }
     };
 
@@ -227,3 +227,52 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 }); // end DOMContentLoaded
+
+
+/* DOWNLOAD MODAL — shared across all sections */
+const downloadModal = document.getElementById('downloadModal');
+const modalClose    = document.getElementById('modalClose');
+const modalSubmit   = document.getElementById('modalSubmit');
+
+const openModal = () => {
+  downloadModal.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+};
+
+const closeModal = () => {
+  downloadModal.classList.remove('is-open');
+  document.body.style.overflow = '';
+};
+
+// All download buttons across all sections trigger this modal
+document.querySelectorAll('[id^="downloadBtn"], .js-download-trigger').forEach(btn => {
+  btn.addEventListener('click', openModal);
+});
+
+if (modalClose) modalClose.addEventListener('click', closeModal);
+
+// Close on overlay click
+if (downloadModal) {
+  downloadModal.addEventListener('click', (e) => {
+    if (e.target === downloadModal) closeModal();
+  });
+}
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// Form submit
+if (modalSubmit) {
+  modalSubmit.addEventListener('click', () => {
+    const email = document.getElementById('modalEmail');
+    if (!email.value || !email.value.includes('@')) {
+      email.focus();
+      email.style.borderColor = '#EF4444';
+      return;
+    }
+    email.style.borderColor = '';
+    closeModal();
+  });
+}

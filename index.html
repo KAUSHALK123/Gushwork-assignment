@@ -4,17 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mangalam HDPE Pipes</title>
-  <!-- Google Fonts: Inter for body, used throughout -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- ============================================================
-       STICKY HEADER (appears on scroll past first fold)
-  ============================================================ -->
+  <!-- STICKY HEADER -->
   <div class="sticky-header" id="stickyHeader">
     <div class="sticky-header__inner">
       <span class="sticky-header__title">Premium HDPE Pipes &amp; Coils for Modern Infrastructure</span>
@@ -25,12 +22,9 @@
     </div>
   </div>
 
-  <!-- ============================================================
-       NAVBAR
-  ============================================================ -->
+  <!-- NAVBAR -->
   <header class="navbar" id="navbar">
     <div class="navbar__inner">
-      <!-- Logo -->
       <a href="#" class="navbar__logo">
         <div class="logo-mark">
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,8 +37,6 @@
           <span class="logo-text__sub">HDPE | PIPES</span>
         </div>
       </a>
-
-      <!-- Nav Links -->
       <nav class="navbar__nav" id="navMenu">
         <a href="#" class="navbar__link">About Us</a>
         <a href="#" class="navbar__link navbar__link--dropdown">
@@ -53,25 +45,19 @@
         </a>
         <a href="#" class="btn btn--primary navbar__cta">Contact Us</a>
       </nav>
-
-      <!-- Mobile Hamburger -->
       <button class="navbar__hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </header>
 
-  <!-- ============================================================
-       SECTION 1: HERO / PRODUCT DETAIL
-  ============================================================ -->
   <main>
-    <section class="hero-section" id="heroSection">
-      <!-- Noise texture overlay -->
-      <div class="noise-overlay"></div>
 
+    <!-- SECTION 1: HERO / PRODUCT DETAIL -->
+    <section class="hero-section" id="heroSection">
+      <div class="noise-overlay"></div>
       <div class="hero-section__inner">
 
-        <!-- Breadcrumb -->
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <a href="#" class="breadcrumb__link">Products</a>
           <span class="breadcrumb__sep">
@@ -80,67 +66,38 @@
           <span class="breadcrumb__current">Two For One Twister</span>
         </nav>
 
-        <!-- Product Layout: Left (carousel) + Right (details) -->
         <div class="product-layout">
 
-          <!-- ── LEFT: Image Carousel ── -->
+          <!-- LEFT: Carousel -->
           <div class="carousel-wrapper">
             <div class="carousel" id="carousel">
-
-              <!-- Main image display -->
               <div class="carousel__main" id="carouselMain">
                 <button class="carousel__arrow carousel__arrow--prev" id="prevBtn" aria-label="Previous image">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 4l-6 6 6 6" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
-
-                <!-- Main image with zoom preview -->
                 <div class="carousel__image-container" id="imageContainer">
-                  <img
-                    src="assets/images/noise-texture.png.png"
-                    alt="Premium HDPE Pipes - Main View"
-                    class="carousel__main-img"
-                    id="mainImage"
-                    draggable="false"
-                  />
-                  <!-- Zoom lens indicator -->
+                  <img src="assets/images/product-main.jpg" alt="Premium HDPE Pipes - Main View" class="carousel__main-img" id="mainImage" draggable="false" />
                   <div class="zoom-lens" id="zoomLens"></div>
                 </div>
-
                 <button class="carousel__arrow carousel__arrow--next" id="nextBtn" aria-label="Next image">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 4l6 6-6 6" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
               </div>
-
-              <!-- Zoom preview window -->
               <div class="zoom-preview" id="zoomPreview">
                 <img src="assets/images/product-main.jpg" alt="Zoom preview" class="zoom-preview__img" id="zoomPreviewImg" />
               </div>
-
-              <!-- Thumbnails -->
               <div class="carousel__thumbs" id="carouselThumbs">
-                <button class="carousel__thumb carousel__thumb--active" data-index="0" aria-label="Image 1">
-                  <img src="assets/images/product-main.jpg" alt="Thumbnail 1" />
-                </button>
-                <button class="carousel__thumb" data-index="1" aria-label="Image 2">
-                  <img src="assets/images/product-main.jpg" alt="Thumbnail 2" />
-                </button>
-                <button class="carousel__thumb" data-index="2" aria-label="Image 3">
-                  <img src="assets/images/product-main.jpg" alt="Thumbnail 3" />
-                </button>
-                <button class="carousel__thumb" data-index="3" aria-label="Image 4">
-                  <img src="assets/images/product-main.jpg" alt="Thumbnail 4" />
-                </button>
-                <button class="carousel__thumb" data-index="4" aria-label="Image 5">
-                  <img src="assets/images/product-main.jpg" alt="Thumbnail 5" />
-                </button>
+                <button class="carousel__thumb carousel__thumb--active" data-index="0" aria-label="Image 1"><img src="assets/images/product-main.jpg" alt="Thumbnail 1" /></button>
+                <button class="carousel__thumb" data-index="1" aria-label="Image 2"><img src="assets/images/product-main.jpg" alt="Thumbnail 2" /></button>
+                <button class="carousel__thumb" data-index="2" aria-label="Image 3"><img src="assets/images/product-main.jpg" alt="Thumbnail 3" /></button>
+                <button class="carousel__thumb" data-index="3" aria-label="Image 4"><img src="assets/images/product-main.jpg" alt="Thumbnail 4" /></button>
+                <button class="carousel__thumb" data-index="4" aria-label="Image 5"><img src="assets/images/product-main.jpg" alt="Thumbnail 5" /></button>
               </div>
             </div>
           </div>
 
-          <!-- ── RIGHT: Product Details ── -->
+          <!-- RIGHT: Product Details -->
           <div class="product-details">
-
-            <!-- Certification badges -->
             <div class="cert-badges">
               <span class="cert-badge">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l1.5 3 3.5.5-2.5 2.5.5 3.5L8 9l-3 1.5.5-3.5L3 4.5l3.5-.5L8 1z" stroke="#1D4ED8" stroke-width="1.2" fill="none"/></svg>
@@ -155,47 +112,14 @@
                 CE Certified
               </span>
             </div>
-
-            <!-- Heading -->
-            <h1 class="product-title">
-              Premium HDPE Pipes &amp; Coils for Modern Infrastructure
-            </h1>
-
-            <!-- Feature list -->
+            <h1 class="product-title">Premium HDPE Pipes &amp; Coils for Modern Infrastructure</h1>
             <ul class="feature-list">
-              <li class="feature-list__item">
-                <span class="feature-list__icon">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" fill="#1D4ED8"/><path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                Leak-Proof Fusion Joints
-              </li>
-              <li class="feature-list__item">
-                <span class="feature-list__icon">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" fill="#1D4ED8"/><path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                Chemical Resistance
-              </li>
-              <li class="feature-list__item">
-                <span class="feature-list__icon">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" fill="#1D4ED8"/><path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                50+ Year Service Life
-              </li>
-              <li class="feature-list__item">
-                <span class="feature-list__icon">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" fill="#1D4ED8"/><path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                Flexible Installation
-              </li>
-              <li class="feature-list__item">
-                <span class="feature-list__icon">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" fill="#1D4ED8"/><path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                Flexible Installation
-              </li>
+              <li class="feature-list__item"><span class="feature-list__icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" fill="#1D4ED8"/><path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Leak-Proof Fusion Joints</li>
+              <li class="feature-list__item"><span class="feature-list__icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" fill="#1D4ED8"/><path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Chemical Resistance</li>
+              <li class="feature-list__item"><span class="feature-list__icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" fill="#1D4ED8"/><path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>50+ Year Service Life</li>
+              <li class="feature-list__item"><span class="feature-list__icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" fill="#1D4ED8"/><path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Flexible Installation</li>
+              <li class="feature-list__item"><span class="feature-list__icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" fill="#1D4ED8"/><path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Flexible Installation</li>
             </ul>
-
-            <!-- Price box -->
             <div class="price-box">
               <span class="price-box__label">Price Range</span>
               <div class="price-box__value">₹4,80,000 - 7,90,000</div>
@@ -203,12 +127,8 @@
                 <span class="price-tag price-tag--yellow">Shipping: 6-12 days</span>
                 <span class="price-tag price-tag--blue">Returns: If returned within 7 days</span>
               </div>
-              <div class="price-box__cert">
-                Certifications: ISO Certified, BIS Certified
-              </div>
+              <div class="price-box__cert">Certifications: ISO Certified, BIS Certified</div>
             </div>
-
-            <!-- CTA Buttons -->
             <div class="cta-buttons">
               <a href="#" class="btn btn--primary btn--lg">Get Custom Quote</a>
               <a href="#" class="btn btn--outline btn--lg">
@@ -216,41 +136,88 @@
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </div>
-
-          </div><!-- /product-details -->
-        </div><!-- /product-layout -->
+          </div>
+        </div>
 
         <!-- Trust bar -->
         <div class="trust-bar">
           <p class="trust-bar__label">Trusted by Hundreds of Companies Globally</p>
           <div class="trust-bar__logos">
-            <!-- Euroflex logo repeated 5 times -->
-            <div class="trust-logo">
-              <strong>EUR<span>O</span>FLEX</strong>
-              <small>WE CREATE SOLUTIONS</small>
-            </div>
-            <div class="trust-logo">
-              <strong>EUR<span>O</span>FLEX</strong>
-              <small>WE CREATE SOLUTIONS</small>
-            </div>
-            <div class="trust-logo">
-              <strong>EUR<span>O</span>FLEX</strong>
-              <small>WE CREATE SOLUTIONS</small>
-            </div>
-            <div class="trust-logo">
-              <strong>EUR<span>O</span>FLEX</strong>
-              <small>WE CREATE SOLUTIONS</small>
-            </div>
-            <div class="trust-logo">
-              <strong>EUR<span>O</span>FLEX</strong>
-              <small>WE CREATE SOLUTIONS</small>
-            </div>
+            <div class="trust-logo"><strong>EUR<span>O</span>FLEX</strong><small>WE CREATE SOLUTIONS</small></div>
+            <div class="trust-logo"><strong>EUR<span>O</span>FLEX</strong><small>WE CREATE SOLUTIONS</small></div>
+            <div class="trust-logo"><strong>EUR<span>O</span>FLEX</strong><small>WE CREATE SOLUTIONS</small></div>
+            <div class="trust-logo"><strong>EUR<span>O</span>FLEX</strong><small>WE CREATE SOLUTIONS</small></div>
+            <div class="trust-logo"><strong>EUR<span>O</span>FLEX</strong><small>WE CREATE SOLUTIONS</small></div>
           </div>
         </div>
 
-      </div><!-- /hero-section__inner -->
+      </div>
     </section>
+
+    <!-- SECTION 2: TECHNICAL SPECIFICATIONS -->
+    <section class="tech-specs" id="techSpecs">
+      <div class="tech-specs__inner">
+
+        <div class="tech-specs__header">
+          <h2 class="tech-specs__title">Technical Specifications at a Glance</h2>
+          <p class="tech-specs__subtitle">Comprehensive performance data demonstrating our commitment to quality and engineering excellence.</p>
+        </div>
+
+        <div class="tech-specs__table-wrap">
+          <table class="specs-table">
+            <thead>
+              <tr>
+                <th>PARAMETER</th>
+                <th>SPECIFICATION</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Pipe Diameter Range</td><td>20mm to 1600mm (3/4" to 63")</td></tr>
+              <tr><td>Pressure Ratings</td><td>PN 2.5, PN 4, PN 6, PN 8, PN 10, PN 12.5, PN 16</td></tr>
+              <tr><td>Standard Dimension Ratio</td><td>SDR 33, SDR 26, SDR 21, SDR 17, SDR 13.6, SDR 11</td></tr>
+              <tr><td>Operating Temperature</td><td>-40C to +80C (-40F to +176F)</td></tr>
+              <tr><td>Service Life</td><td>50+ Years (at 20 degrees C, PN 10)</td></tr>
+              <tr><td>Material Density</td><td>0.95 - 0.96 g/cm3</td></tr>
+              <tr><td>Certification Standards</td><td>IS 5984, ISO 4427, ASTM D3035</td></tr>
+              <tr><td>Joint Type</td><td>Butt Fusion, Electrofusion, Mechanical</td></tr>
+              <tr><td>Coil Lengths</td><td>Up to 500mm (for smaller diameters)</td></tr>
+              <tr><td>Country of Origin</td><td>🇮🇳 India</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tech-specs__cta">
+          <button class="btn btn--download" id="downloadBtn">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Download Full Technical Datasheet
+          </button>
+        </div>
+
+      </div>
+    </section>
+
   </main>
+
+  <!-- DOWNLOAD MODAL (shared across all sections) -->
+  <div class="modal-overlay" id="downloadModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button class="modal__close" id="modalClose" aria-label="Close modal">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <h3 class="modal__title" id="modalTitle">Let us email the entire catalogue to you</h3>
+      <div class="modal__form" id="modalForm">
+        <div class="modal__field">
+          <label class="modal__label" for="modalEmail">Your Email <span class="modal__required">*</span></label>
+          <input class="modal__input" type="email" id="modalEmail" placeholder="example@gmail.com" required />
+        </div>
+        <div class="modal__field">
+          <label class="modal__label" for="modalPhone">Your Contact (Optional)</label>
+          <input class="modal__input" type="tel" id="modalPhone" placeholder="+91-0000000000" />
+        </div>
+        <button class="btn btn--primary modal__submit" id="modalSubmit">Get Insights</button>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
