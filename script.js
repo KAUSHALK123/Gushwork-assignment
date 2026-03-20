@@ -291,3 +291,146 @@ document.querySelectorAll('.faq-item__btn').forEach(btn => {
     }
   });
 });
+
+/* SECTION 5: APPLICATIONS CAROUSEL */
+const appTrack = document.getElementById('appTrack');
+const appPrev = document.getElementById('appPrev');
+const appNext = document.getElementById('appNext');
+const appWrapper = document.getElementById('appTrackWrapper');
+
+if (appTrack && appPrev && appNext && appWrapper) {
+  let currentIndex = 0;
+  const cards = appTrack.querySelectorAll('.app-card');
+  const total = cards.length;
+
+  const getCardWidth = () => {
+    return cards[0].offsetWidth + 32;
+  };
+
+  const moveTo = (index) => {
+    currentIndex = ((index % total) + total) % total;
+    appTrack.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+    appTrack.style.transform = `translateX(-${currentIndex * getCardWidth()}px)`;
+  };
+
+  appNext.addEventListener('click', () => moveTo(currentIndex + 1));
+  appPrev.addEventListener('click', () => moveTo(currentIndex - 1));
+
+  let isDragging = false;
+  let startX = 0;
+  let startPos = 0;
+
+  appWrapper.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.clientX;
+    startPos = currentIndex * getCardWidth();
+    appTrack.style.transition = 'none';
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const delta = startPos - (e.clientX - startX);
+    appTrack.style.transform = `translateX(-${delta}px)`;
+  });
+
+  window.addEventListener('mouseup', (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+    const delta = startPos - (e.clientX - startX);
+    const closest = Math.round(delta / getCardWidth());
+    moveTo(closest);
+  });
+
+  appWrapper.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    startPos = currentIndex * getCardWidth();
+    appTrack.style.transition = 'none';
+  }, { passive: true });
+
+  appWrapper.addEventListener('touchmove', (e) => {
+    const delta = startPos - (e.touches[0].clientX - startX);
+    appTrack.style.transform = `translateX(-${delta}px)`;
+  }, { passive: true });
+
+  appWrapper.addEventListener('touchend', (e) => {
+    const delta = startPos - (e.changedTouches[0].clientX - startX);
+    const closest = Math.round(delta / getCardWidth());
+    moveTo(closest);
+  });
+}
+
+/* SECTION 6: MANUFACTURING PROCESS TABS */
+const tabData = {
+  raw: {
+    title: 'High-Grade Raw Material Selection',
+    desc: 'Vacuum sizing tanks ensure precise outer diameter while internal pressure maintains perfect roundness and wall thickness uniformity.',
+    points: ['PE100 grade material', 'Optimal molecular weight distribution']
+  },
+  extrusion: {
+    title: 'Precision Extrusion Process',
+    desc: 'Our advanced extruders melt and shape HDPE resin at optimal temperatures, ensuring consistent melt flow and uniform pipe wall formation throughout production.',
+    points: ['Temperature-controlled barrel zones', 'Consistent melt pressure monitoring']
+  },
+  cooling: {
+    title: 'Controlled Cooling System',
+    desc: 'Pipes pass through calibrated water cooling tanks that gradually reduce temperature, locking in dimensional accuracy and preventing warping or deformation.',
+    points: ['Multi-stage water cooling tanks', 'Precise temperature gradient control']
+  },
+  sizing: {
+    title: 'Accurate Pipe Sizing',
+    desc: 'Vacuum sizing tanks ensure precise outer diameter while internal pressure maintains perfect roundness and wall thickness uniformity across all pipe sizes.',
+    points: ['Vacuum calibration sleeves', 'Real-time diameter measurement']
+  },
+  quality: {
+    title: 'Rigorous Quality Control',
+    desc: 'Every pipe undergoes comprehensive testing including pressure tests, dimensional checks, and material property verification to meet international standards.',
+    points: ['ISO 4427 compliance testing', 'Hydrostatic pressure verification']
+  },
+  marking: {
+    title: 'Permanent Pipe Marking',
+    desc: 'Inkjet printing systems apply permanent identification markings including pipe specifications, standards compliance, and production batch information.',
+    points: ['UV-resistant ink marking', 'Full traceability batch coding']
+  },
+  cutting: {
+    title: 'Precision Pipe Cutting',
+    desc: 'Automated cutting systems ensure clean, square pipe ends at exact specified lengths, ready for immediate installation or further processing.',
+    points: ['Automated length measurement', 'Clean burr-free cut ends']
+  },
+  packaging: {
+    title: 'Protective Packaging & Dispatch',
+    desc: 'Finished pipes are carefully packaged using protective materials to prevent damage during transport and storage, ensuring they arrive in perfect condition.',
+    points: ['UV-protective wrapping', 'Secure bundling for transport']
+  }
+};
+
+const processTabs = document.getElementById('processTabs');
+const processTitle = document.getElementById('processTitle');
+const processDesc = document.getElementById('processDesc');
+const processList = document.getElementById('processList');
+
+if (processTabs && processTitle) {
+  processTabs.querySelectorAll('.process-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      processTabs.querySelectorAll('.process-tab').forEach(t => t.classList.remove('process-tab--active'));
+      tab.classList.add('process-tab--active');
+
+      const data = tabData[tab.dataset.tab];
+      if (!data) return;
+
+      processTitle.style.opacity = '0';
+      processDesc.style.opacity = '0';
+      processList.style.opacity = '0';
+
+      setTimeout(() => {
+        processTitle.textContent = data.title;
+        processDesc.textContent = data.desc;
+        processList.innerHTML = data.points.map(p =>
+          `<li><span class="process-content__bullet"></span>${p}</li>`
+        ).join('');
+        processTitle.style.opacity = '1';
+        processDesc.style.opacity = '1';
+        processList.style.opacity = '1';
+      }, 200);
+    });
+  });
+}
