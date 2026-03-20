@@ -285,7 +285,6 @@ h1, h2, h3 {
 .hero-section {
   position: relative;
   background-color: #f1f3f6;
-  border-top: 1px solid var(--color-border);
   overflow: hidden;
 }
 
@@ -299,7 +298,8 @@ h1, h2, h3 {
   /* CSS-generated noise fallback — replaced by actual texture when file is present */
   background-image: url('assets/images/noise-texture.png');
   background-repeat: repeat;
-  background-size: 200px 200px;
+  background-size: 150px 150px;
+  mix-blend-mode: multiply;
 }
 
 .hero-section__inner {
@@ -1203,4 +1203,184 @@ h1, h2, h3 {
   .features-section__inner { padding: 40px 20px; }
   .features-grid { grid-template-columns: 1fr; }
   .features-section__title { font-size: 26px; }
+}
+
+/* SECTION 4: FAQ */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&display=swap');
+
+.faq-section {
+  background: #f1f3f6;
+  width: 100%;
+}
+
+.faq-section__inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.faq-block {
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.faq-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #0d0d0d;
+}
+
+.faq-title--blue {
+  color: #2b3990;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e1e3e5;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.faq-item {
+  border-bottom: 1px solid #e1e3e5;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-item__btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  background: #ffffff;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  gap: 16px;
+  transition: background 0.15s ease;
+}
+
+.faq-item__btn:hover {
+  background: #f8f9fb;
+}
+
+.faq-item__icon {
+  flex-shrink: 0;
+  color: #2b3990;
+  transition: transform 0.25s ease;
+}
+
+.faq-item__btn[aria-expanded="true"] .faq-item__icon {
+  transform: rotate(180deg);
+}
+
+.faq-item__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 24px;
+}
+
+.faq-item__answer.is-open {
+  max-height: 300px;
+  padding: 0 24px 20px;
+}
+
+.faq-item__answer p {
+  font-size: 14px;
+  color: #535a61;
+  line-height: 1.7;
+}
+
+/* Email catalogue box */
+.catalogue-box {
+  max-width: 960px;
+  background: #ffffff;
+  border: 1px solid #e1e3e5;
+  border-radius: 10px;
+  padding: 32px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.catalogue-box__title {
+  font-family: 'Urbanist', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0d0d0d;
+  margin-bottom: 6px;
+}
+
+.catalogue-box__subtitle {
+  font-size: 13px;
+  color: #535a61;
+  line-height: 1.5;
+}
+
+.catalogue-box__form {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.catalogue-box__input {
+  padding: 11px 16px;
+  border: 1px solid #e1e3e5;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  color: #111827;
+  outline: none;
+  width: 220px;
+  transition: border-color 0.15s ease;
+}
+
+.catalogue-box__input::placeholder {
+  color: #9CA3AF;
+}
+
+.catalogue-box__input:focus {
+  border-color: #2b3990;
+  box-shadow: 0 0 0 3px rgba(43, 57, 144, 0.1);
+}
+
+@media (max-width: 1200px) {
+  .faq-section__inner { padding: 80px; }
+}
+
+@media (max-width: 1080px) {
+  .faq-section__inner { padding: 80px 60px; }
+  .faq-title { font-size: 38px; }
+}
+
+@media (max-width: 768px) {
+  .faq-section__inner { padding: 60px 32px; gap: 40px; }
+  .faq-title { font-size: 30px; }
+  .catalogue-box { flex-direction: column; align-items: flex-start; padding: 24px; }
+  .catalogue-box__form { flex-direction: column; width: 100%; }
+  .catalogue-box__input { width: 100%; }
+  .catalogue-box__form .btn { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .faq-section__inner { padding: 40px 20px; }
+  .faq-title { font-size: 26px; }
+}
+.features-section {
+  border-bottom: 1px solid #cfd1d4;
 }
