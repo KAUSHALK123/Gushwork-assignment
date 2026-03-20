@@ -1,11 +1,11 @@
-/* ============================================================
+/* =============GITHUB:KAUSHALK123=============================
    SCRIPT.JS — Mangalam HDPE Pipes
    Sections:
    1. Sticky Header Logic
    2. Mobile Navbar Toggle
    3. Image Carousel
    4. Zoom on Hover (Carousel)
-============================================================ */
+=============GITHUB:KAUSHALK123============================ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
