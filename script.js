@@ -86,12 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Array of image sources — add real paths as you export images
   const carouselImages = [
-    'assets/images/product-main.jpg',
-    'assets/images/product-main.jpg', // replace with product-2.jpg, etc.
-    'assets/images/product-main.jpg',
-    'assets/images/product-main.jpg',
-    'assets/images/product-main.jpg',
-  ];
+    'assets/images/hdpe.jpg',
+    'assets/images/hdpe.jpg',
+    'assets/images/ind1.jpeg',
+    'assets/images/ind2.jpg',
+    'assets/images/ind3.jpeg',
+];
 
   let currentIndex = 0;
 
@@ -171,7 +171,10 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     const updateZoom = (e) => {
       const rect = imageContainer.getBoundingClientRect();
-
+      const previewX = imageContainer.getBoundingClientRect().right + 16;
+      const previewY = imageContainer.getBoundingClientRect().top;
+      zoomPreview.style.left = previewX + 'px';
+      zoomPreview.style.top = previewY + 'px';
       // Cursor position relative to image container
       let x = e.clientX - rect.left;
       let y = e.clientY - rect.top;
@@ -299,22 +302,46 @@ const appNext = document.getElementById('appNext');
 const appWrapper = document.getElementById('appTrackWrapper');
 
 if (appTrack && appPrev && appNext && appWrapper) {
-  let currentIndex = 0;
-  const cards = appTrack.querySelectorAll('.app-card');
-  const total = cards.length;
+  const originalCards = Array.from(appTrack.querySelectorAll('.app-card'));
+  const total = originalCards.length;
 
-  const getCardWidth = () => {
-    return cards[0].offsetWidth + 32;
+  originalCards.forEach(card => {
+    appTrack.appendChild(card.cloneNode(true));
+    appTrack.insertBefore(card.cloneNode(true), appTrack.firstChild);
+  });
+
+  const allCards = appTrack.querySelectorAll('.app-card');
+  const cardWidth = originalCards[0].offsetWidth + 32;
+  let currentIndex = total;
+
+  const jumpTo = (index, animate) => {
+    appTrack.style.transition = animate ? 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)' : 'none';
+    appTrack.style.transform = `translateX(-${index * cardWidth}px)`;
   };
 
-  const moveTo = (index) => {
-    currentIndex = ((index % total) + total) % total;
-    appTrack.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-    appTrack.style.transform = `translateX(-${currentIndex * getCardWidth()}px)`;
-  };
+  jumpTo(currentIndex, false);
 
-  appNext.addEventListener('click', () => moveTo(currentIndex + 1));
-  appPrev.addEventListener('click', () => moveTo(currentIndex - 1));
+  appNext.addEventListener('click', () => {
+    currentIndex++;
+    jumpTo(currentIndex, true);
+    setTimeout(() => {
+      if (currentIndex >= total * 2) {
+        currentIndex = total;
+        jumpTo(currentIndex, false);
+      }
+    }, 420);
+  });
+
+  appPrev.addEventListener('click', () => {
+    currentIndex--;
+    jumpTo(currentIndex, true);
+    setTimeout(() => {
+      if (currentIndex < total) {
+        currentIndex = total * 2 - 1;
+        jumpTo(currentIndex, false);
+      }
+    }, 420);
+  });
 
   let isDragging = false;
   let startX = 0;
@@ -323,7 +350,7 @@ if (appTrack && appPrev && appNext && appWrapper) {
   appWrapper.addEventListener('mousedown', (e) => {
     isDragging = true;
     startX = e.clientX;
-    startPos = currentIndex * getCardWidth();
+    startPos = currentIndex * cardWidth;
     appTrack.style.transition = 'none';
   });
 
@@ -337,13 +364,13 @@ if (appTrack && appPrev && appNext && appWrapper) {
     if (!isDragging) return;
     isDragging = false;
     const delta = startPos - (e.clientX - startX);
-    const closest = Math.round(delta / getCardWidth());
-    moveTo(closest);
+    currentIndex = Math.round(delta / cardWidth);
+    jumpTo(currentIndex, true);
   });
 
   appWrapper.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
-    startPos = currentIndex * getCardWidth();
+    startPos = currentIndex * cardWidth;
     appTrack.style.transition = 'none';
   }, { passive: true });
 
@@ -354,8 +381,8 @@ if (appTrack && appPrev && appNext && appWrapper) {
 
   appWrapper.addEventListener('touchend', (e) => {
     const delta = startPos - (e.changedTouches[0].clientX - startX);
-    const closest = Math.round(delta / getCardWidth());
-    moveTo(closest);
+    currentIndex = Math.round(delta / cardWidth);
+    jumpTo(currentIndex, true);
   });
 }
 
@@ -364,42 +391,50 @@ const tabData = {
   raw: {
     title: 'High-Grade Raw Material Selection',
     desc: 'Vacuum sizing tanks ensure precise outer diameter while internal pressure maintains perfect roundness and wall thickness uniformity.',
-    points: ['PE100 grade material', 'Optimal molecular weight distribution']
+    points: ['PE100 grade material', 'Optimal molecular weight distribution'],
+    image: 'assets/images/hdpe.jpg'
   },
   extrusion: {
     title: 'Precision Extrusion Process',
     desc: 'Our advanced extruders melt and shape HDPE resin at optimal temperatures, ensuring consistent melt flow and uniform pipe wall formation throughout production.',
-    points: ['Temperature-controlled barrel zones', 'Consistent melt pressure monitoring']
+    points: ['Temperature-controlled barrel zones', 'Consistent melt pressure monitoring'],
+    image: 'assets/images/ind1.jpeg'
   },
   cooling: {
     title: 'Controlled Cooling System',
     desc: 'Pipes pass through calibrated water cooling tanks that gradually reduce temperature, locking in dimensional accuracy and preventing warping or deformation.',
-    points: ['Multi-stage water cooling tanks', 'Precise temperature gradient control']
+    points: ['Multi-stage water cooling tanks', 'Precise temperature gradient control'],
+    image: 'assets/images/ind2.jpg'
   },
   sizing: {
     title: 'Accurate Pipe Sizing',
     desc: 'Vacuum sizing tanks ensure precise outer diameter while internal pressure maintains perfect roundness and wall thickness uniformity across all pipe sizes.',
-    points: ['Vacuum calibration sleeves', 'Real-time diameter measurement']
+    points: ['Vacuum calibration sleeves', 'Real-time diameter measurement'],
+    image: 'assets/images/ind3.jpeg'
   },
   quality: {
     title: 'Rigorous Quality Control',
     desc: 'Every pipe undergoes comprehensive testing including pressure tests, dimensional checks, and material property verification to meet international standards.',
-    points: ['ISO 4427 compliance testing', 'Hydrostatic pressure verification']
+    points: ['ISO 4427 compliance testing', 'Hydrostatic pressure verification'],
+    image: 'assets/images/hdpe.jpg'
   },
   marking: {
     title: 'Permanent Pipe Marking',
     desc: 'Inkjet printing systems apply permanent identification markings including pipe specifications, standards compliance, and production batch information.',
-    points: ['UV-resistant ink marking', 'Full traceability batch coding']
+    points: ['UV-resistant ink marking', 'Full traceability batch coding'],
+    image: 'assets/images/ind1.jpeg'
   },
   cutting: {
     title: 'Precision Pipe Cutting',
     desc: 'Automated cutting systems ensure clean, square pipe ends at exact specified lengths, ready for immediate installation or further processing.',
-    points: ['Automated length measurement', 'Clean burr-free cut ends']
+    points: ['Automated length measurement', 'Clean burr-free cut ends'],
+    image: 'assets/images/ind2.jpg'
   },
   packaging: {
     title: 'Protective Packaging & Dispatch',
     desc: 'Finished pipes are carefully packaged using protective materials to prevent damage during transport and storage, ensuring they arrive in perfect condition.',
-    points: ['UV-protective wrapping', 'Secure bundling for transport']
+    points: ['UV-protective wrapping', 'Secure bundling for transport'],
+    image: 'assets/images/ind3.jpeg'
   }
 };
 
@@ -407,19 +442,40 @@ const processTabs = document.getElementById('processTabs');
 const processTitle = document.getElementById('processTitle');
 const processDesc = document.getElementById('processDesc');
 const processList = document.getElementById('processList');
+const processImg = document.getElementById('processImg');
+
+let lastTabIndex = 0;
 
 if (processTabs && processTitle) {
-  processTabs.querySelectorAll('.process-tab').forEach(tab => {
+  const tabs = Array.from(processTabs.querySelectorAll('.process-tab'));
+
+  tabs.forEach((tab, i) => {
     tab.addEventListener('click', () => {
-      processTabs.querySelectorAll('.process-tab').forEach(t => t.classList.remove('process-tab--active'));
+      const direction = i > lastTabIndex ? 1 : -1;
+      lastTabIndex = i;
+
+      tabs.forEach(t => t.classList.remove('process-tab--active'));
       tab.classList.add('process-tab--active');
 
       const data = tabData[tab.dataset.tab];
       if (!data) return;
 
+      const slideOut = direction === 1 ? '40px' : '-40px';
+      const slideIn = direction === 1 ? '-40px' : '40px';
+
+      processTitle.style.transition = 'none';
+      processDesc.style.transition = 'none';
+      processList.style.transition = 'none';
+      processImg.style.transition = 'none';
+
       processTitle.style.opacity = '0';
+      processTitle.style.transform = `translateX(${slideOut})`;
       processDesc.style.opacity = '0';
+      processDesc.style.transform = `translateX(${slideOut})`;
       processList.style.opacity = '0';
+      processList.style.transform = `translateX(${slideOut})`;
+      processImg.style.opacity = '0';
+      processImg.style.transform = `translateX(${direction === 1 ? '40px' : '-40px'})`;
 
       setTimeout(() => {
         processTitle.textContent = data.title;
@@ -427,10 +483,29 @@ if (processTabs && processTitle) {
         processList.innerHTML = data.points.map(p =>
           `<li><span class="process-content__bullet"></span>${p}</li>`
         ).join('');
-        processTitle.style.opacity = '1';
-        processDesc.style.opacity = '1';
-        processList.style.opacity = '1';
-      }, 200);
+        processImg.src = data.image;
+
+        processTitle.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+        processDesc.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+        processList.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+        processImg.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+
+        processTitle.style.transform = `translateX(${slideIn})`;
+        processDesc.style.transform = `translateX(${slideIn})`;
+        processList.style.transform = `translateX(${slideIn})`;
+        processImg.style.transform = `translateX(${direction === 1 ? '-40px' : '40px'})`;
+
+        requestAnimationFrame(() => {
+          processTitle.style.opacity = '1';
+          processTitle.style.transform = 'translateX(0)';
+          processDesc.style.opacity = '1';
+          processDesc.style.transform = 'translateX(0)';
+          processList.style.opacity = '1';
+          processList.style.transform = 'translateX(0)';
+          processImg.style.opacity = '1';
+          processImg.style.transform = 'translateX(0)';
+        });
+      }, 220);
     });
   });
 }

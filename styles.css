@@ -162,8 +162,6 @@ h1, h2, h3 {
 }
 
 .sticky-header__inner {
-  max-width: 1240px;
-  margin: 0 auto;
   padding: 12px 100px;
   display: flex;
   align-items: center;
@@ -201,8 +199,6 @@ h1, h2, h3 {
 
 
 .navbar__inner {
-  max-width: 1240px;
-  margin: 0 auto;
   padding: 16px 100px;
   display: flex;
   align-items: center;
@@ -282,10 +278,14 @@ h1, h2, h3 {
 }
 
 /* ── 7. Hero / Product Section ── */
-.hero-section {
+.hero-section__inner {
   position: relative;
-  background-color: #f1f3f6;
-  overflow: hidden;
+  z-index: 1;
+  width: 100%;
+  padding: 60px 100px 80px 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
 }
 
 /* Noise texture overlay using CSS pseudo-element */
@@ -294,23 +294,13 @@ h1, h2, h3 {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.45;
-  /* CSS-generated noise fallback — replaced by actual texture when file is present */
-  background-image: url('assets/images/noise-texture.png');
+  opacity: 0.8;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.65' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 0 0 0 0 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 150px 150px;
-  mix-blend-mode: multiply;
-}
-
-.hero-section__inner {
-  position: relative;
-  z-index: 1;
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 100px 100px 80px 100px;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-80);
+  mix-blend-mode: overlay;
+  background-color: rgba(100, 100, 100, 0.03);
+  filter: contrast(120%) brightness(95%);
 }
 
 /* Breadcrumb */
@@ -345,9 +335,9 @@ h1, h2, h3 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
+  width: 100%;
   align-items: start;
 }
-
 /* ── 8. Carousel ── */
 .carousel-wrapper {
   position: relative;
@@ -475,20 +465,18 @@ h1, h2, h3 {
 
 /* ── 9. Zoom Preview Window ── */
 .zoom-preview {
-  position: absolute;
-  left: calc(100% + 16px);
-  top: 0;
+  position: fixed;
   width: 320px;
   height: 320px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-  background: var(--color-white);
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+  background: #ffffff;
   box-shadow: 0 8px 32px rgba(0,0,0,0.14);
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease;
-  z-index: 50;
+  z-index: 999;
 }
 
 .zoom-preview.is-visible {
@@ -686,8 +674,6 @@ h1, h2, h3 {
 
 @media (min-width: 1440px) {
   .hero-section__inner {
-    max-width: 1240px;
-    margin: 0 auto;
     padding: 100px;
   }
 }
@@ -698,13 +684,7 @@ h1, h2, h3 {
     --space-100: 80px;
   }
 
-  .navbar__inner,
-  .sticky-header__inner {
-    max-width: 100%;
-  }
-
   .hero-section__inner {
-    max-width: 100%;
     padding: 80px;
   }
 
@@ -852,8 +832,6 @@ h1, h2, h3 {
 }
 
 .tech-specs__inner {
-  max-width: 1240px;
-  margin: 0 auto;
   padding: 100px 100px;
   display: flex;
   flex-direction: column;
@@ -1604,11 +1582,19 @@ h1, h2, h3 {
 
 .process-tabs {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 0;
+  scrollbar-width: none;
+}
+
+.process-tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .process-tab {
+  position: relative;
   padding: 8px 18px;
   border-radius: 999px;
   border: 1.5px solid #cfd1d4;
@@ -1619,6 +1605,40 @@ h1, h2, h3 {
   cursor: pointer;
   transition: all 0.2s ease;
   font-family: 'Inter', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.process-tab:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 1.5px;
+  background: #cfd1d4;
+  z-index: 0;
+}
+
+.process-tab:not(:first-child) {
+  margin-left: 24px;
+}
+
+.process-tab:hover {
+  border-color: #2b3990;
+  color: #2b3990;
+}
+
+.process-tab--active {
+  background: #2b3990;
+  border-color: #2b3990;
+  color: #ffffff;
+}
+
+.process-tab--active::before {
+  background: #2b3990;
 }
 
 .process-tab:hover {
@@ -1637,6 +1657,7 @@ h1, h2, h3 {
   grid-template-columns: 1fr 1fr;
   gap: 32px;
   align-items: center;
+  overflow: hidden;
 }
 
 .process-content__text {
@@ -1948,6 +1969,7 @@ h1, h2, h3 {
   max-width: 1040px;
   margin: 0 auto;
   width: 100%;
+  align-items: stretch;
 }
 
 .portfolio-card {
@@ -1959,8 +1981,8 @@ h1, h2, h3 {
   flex-direction: column;
   gap: 20px;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
+  height: 100%;
 }
-
 .portfolio-card:hover {
   box-shadow: 0 8px 32px rgba(0,0,0,0.08);
   transform: translateY(-2px);
@@ -2014,19 +2036,20 @@ h1, h2, h3 {
   border: 1.5px solid #cfd1d4;
   border-radius: 6px;
   background: transparent;
-  color: #0d0d0d;
+  color: #2b3990;
   font-size: 14px;
   font-weight: 500;
   font-family: 'Inter', sans-serif;
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
   width: 100%;
+  margin-top: auto;
 }
 
 .btn--learn:hover {
+  background: #2b3990;
   border-color: #2b3990;
-  color: #2b3990;
+  color: #ffffff;
 }
-
 .portfolio-cta-box {
   max-width: 1040px;
   margin: 0 auto;
@@ -2091,6 +2114,7 @@ h1, h2, h3 {
 .resources-section {
   background: #f1f3f6;
   width: 100%;
+  border-bottom: 1px solid #cfd1d4;
 }
 
 .resources-section__inner {
