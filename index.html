@@ -11,15 +11,18 @@
 <body>
   <!-------------------GITHUB:KAUSHALK123--------------------->
   <!-- STICKY HEADER -->
-  <div class="sticky-header" id="stickyHeader">
-    <div class="sticky-header__inner">
-      <span class="sticky-header__title">Premium HDPE Pipes &amp; Coils for Modern Infrastructure</span>
-      <div class="sticky-header__actions">
-        <a href="#" class="btn btn--outline">View Technical Specs</a>
-        <a href="#" class="btn btn--primary">Get Custom Quote</a>
+  <<div class="sticky-header" id="stickyHeader">
+  <div class="sticky-header__inner">
+    <div class="sticky-header__left">
+      <img src="assets/images/hdpe.jpg" alt="Product" class="sticky-header__img" />
+      <div class="sticky-header__info">
+        <span class="sticky-header__title">Premium HDPE Pipes & Coils for Modern Infrastructure</span>
+        <span class="sticky-header__price">₹4,80,000 - 7,90,000</span>
       </div>
     </div>
+    <a href="#" class="btn btn--primary js-callback-trigger">Get Custom Quote</a>
   </div>
+</div>
 
   <!-- NAVBAR -->
   <header class="navbar" id="navbar">
@@ -251,7 +254,7 @@
     </div>
 
     <div class="features-section__cta">
-      <a href="#" class="btn btn--primary btn--lg">Request a Quote</a>
+      <a href="#" class="btn btn--primary btn--lg js-callback-trigger">Request a Quote</a>
     </div>
 
   </div>
@@ -605,10 +608,10 @@
         <h3 class="portfolio-cta-box__title">Didn't find what <span class="portfolio-cta-box__highlight">you're looking for?</span></h3>
         <p class="portfolio-cta-box__subtitle">Talk to our experts for custom solutions and tailored guidance.</p>
       </div>
-      <a href="#" class="btn btn--primary btn--lg">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 3h3l1.5 3.5-1.8 1.1a10 10 0 004.7 4.7l1.1-1.8L15 12v3a1 1 0 01-1 1A13 13 0 012 4a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Talk to an Expert
-      </a>
+      <a href="#" class="btn btn--primary btn--lg js-callback-trigger">
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 3h3l1.5 3.5-1.8 1.1a10 10 0 004.7 4.7l1.1-1.8L15 12v3a1 1 0 01-1 1A13 13 0 012 4a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  Talk to an Expert
+</a>
     </div>
 
   </div>
@@ -681,7 +684,7 @@
             </select>
             <input class="contact-phone__number" type="tel" placeholder="7003026616" />
           </div>
-          <button class="contact-submit">Request Custom Quote</button>
+          <button class="contact-submit js-callback-trigger">Request Custom Quote</button>
         </div>
       </div>
 
@@ -810,6 +813,39 @@
       </div>
     </div>
   </div>
+
+  <!-- MODAL 2: REQUEST A CALL BACK -->
+<div class="modal-overlay" id="callbackModal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="modal__close" id="callbackModalClose" aria-label="Close modal">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+    <h3 class="modal__title">Request a call back</h3>
+    <div class="modal__form">
+      <div class="modal__field">
+        <input class="modal__input" type="text" placeholder="Full Name" />
+      </div>
+      <div class="modal__field">
+        <input class="modal__input" type="text" placeholder="Company Name" />
+      </div>
+      <div class="modal__field">
+        <input class="modal__input" type="email" placeholder="Email Address" />
+      </div>
+      <div class="modal__field">
+        <div class="contact-phone">
+          <select class="contact-phone__code">
+            <option>+91</option>
+            <option>+1</option>
+            <option>+44</option>
+            <option>+971</option>
+          </select>
+          <input class="contact-phone__number" type="tel" placeholder="7003026616" />
+        </div>
+      </div>
+      <button class="btn btn--primary modal__submit" id="callbackSubmit">Submit Form</button>
+    </div>
+  </div>
+</div>
 
   <script src="script.js"></script>
 </body>

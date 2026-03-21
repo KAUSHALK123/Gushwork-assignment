@@ -162,7 +162,9 @@ h1, h2, h3 {
 }
 
 .sticky-header__inner {
-  padding: 12px 100px;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 10px 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -185,6 +187,41 @@ h1, h2, h3 {
   flex-shrink: 0;
 }
 
+.sticky-header__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sticky-header__img {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.sticky-header__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sticky-header__title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-heading);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 500px;
+}
+
+.sticky-header__price {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-heading);
+}
 /* ── 6. Navbar ── */
 .navbar {
   position: relative;
@@ -944,7 +981,7 @@ h1, h2, h3 {
   position: fixed;
   inset: 0;
   z-index: 500;
-  background: rgba(0, 0, 0, 0.5);
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -952,6 +989,9 @@ h1, h2, h3 {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .modal-overlay.is-open {
@@ -1222,26 +1262,21 @@ h1, h2, h3 {
 .faq-list {
   display: flex;
   flex-direction: column;
-  border: 1px solid #e1e3e5;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #ffffff;
+  gap: 12px;
 }
 
 .faq-item {
-  border-bottom: 1px solid #e1e3e5;
+  border: 1px solid #e1e3e5;
+  border-radius: 10px;
+  background: #ffffff;
+  overflow: hidden;
 }
-
-.faq-item:last-child {
-  border-bottom: none;
-}
-
 .faq-item__btn {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 24px;
+  padding: 16px 24px;
   background: #ffffff;
   text-align: left;
   font-size: 14px;
@@ -1274,7 +1309,7 @@ h1, h2, h3 {
 
 .faq-item__answer.is-open {
   max-height: 300px;
-  padding: 0 24px 20px;
+  padding: 0 24px 16px;
 }
 
 .faq-item__answer p {

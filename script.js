@@ -516,3 +516,33 @@ if (testimonialsTrack) {
   const cards = testimonialsTrack.innerHTML;
   testimonialsTrack.innerHTML = cards + cards;
 }
+
+const callbackModal = document.getElementById('callbackModal');
+const callbackModalClose = document.getElementById('callbackModalClose');
+const callbackSubmit = document.getElementById('callbackSubmit');
+
+const openCallbackModal = () => {
+  callbackModal.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+};
+
+const closeCallbackModal = () => {
+  callbackModal.classList.remove('is-open');
+  document.body.style.overflow = '';
+};
+
+document.querySelectorAll('.js-callback-trigger').forEach(btn => {
+  btn.addEventListener('click', openCallbackModal);
+});
+
+if (callbackModalClose) callbackModalClose.addEventListener('click', closeCallbackModal);
+
+if (callbackModal) {
+  callbackModal.addEventListener('click', (e) => {
+    if (e.target === callbackModal) closeCallbackModal();
+  });
+}
+
+if (callbackSubmit) {
+  callbackSubmit.addEventListener('click', closeCallbackModal);
+}
